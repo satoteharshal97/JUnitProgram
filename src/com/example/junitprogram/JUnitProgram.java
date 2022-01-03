@@ -4,17 +4,20 @@ import java.util.Scanner;
 
 public class JUnitProgram {
     public static void main(String[] args) {
-        sqrt();
+        toBinaryNumber();
     }
-    static void sqrt(){
+    static void toBinaryNumber(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter number to find square root:");
-        double c = scanner.nextDouble();
-        double t = c;
-        double epsilon = 1e-15;
-        while (Math.abs(t - c / t) > epsilon * t) {
-            t = (c / t + t) / 2;
+        System.out.println("Enter the number to convert to decimal:");
+        int decimal = scanner.nextInt();
+        int array [] = new int [50];
+        int j = 0;
+        while (decimal > 0 ) {
+            array [j++] = decimal % 2;
+            decimal = decimal / 2;
         }
-        System.out.println("Square root of "+ c + " is :"+ (int)t);
+        for(int i = j-1;i >= 0;i--){
+            System.out.print(array[i]);
+        }
     }
 }

@@ -4,28 +4,22 @@ import java.util.Scanner;
 
 public class JUnitProgram {
     public static void main(String[] args) {
-        vendingMachine();
+        dayOfWeek();
     }
-    static  void vendingMachine(){
-        //Declaring notes in array
-        int [] change = {1000, 500, 100, 50, 10, 5, 2, 1};
+    static void dayOfWeek(){
+        int m0, y0, d0, x;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the amount of which change you want: ");
-        int number = scanner.nextInt();
-        int totalNotes = 0, noOfNotes;
-        if(number > 0){
-            for(int p = 0; p < change.length; p++){
-
-                if (change[p] <= number) {
-                    noOfNotes = number / change[p];
-                    totalNotes = totalNotes + noOfNotes;
-                    System.out.println("Notes required of " + change[p] + " = " + noOfNotes );
-                    number = number % change[p];
-                }
-            }
-            System.out.println("Minimum Notes required : " + totalNotes);
-        }else{
-            System.out.println("Change cannot be negative!");
-        }
+        System.out.println("Enter the month:");
+        int month = scanner.nextInt();
+        System.out.println("Enter the year:");
+        int year = scanner.nextInt();
+        System.out.println("Enter the day:");
+        int day = scanner.nextInt();
+        String [] days = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        y0 = year - (14 - month) / 12;
+        x = y0 + y0 / 4 - y0 / 100 + y0 / 400;
+        m0 = month + 12 * ((14 - month) / 12) - 2;
+        d0 = (day + x + (31 * m0) / 12) % 7;
+        System.out.println(days[d0]);
     }
 }

@@ -4,19 +4,17 @@ import java.util.Scanner;
 
 public class JUnitProgram {
     public static void main(String[] args) {
-        monthlyPayment();
+        sqrt();
     }
-    static void monthlyPayment(){
+    static void sqrt(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter Years: ");
-        double years = scanner.nextDouble();
-        System.out.println("Enter Principal amount: ");
-        double principal = scanner.nextDouble();
-        System.out.println("Enter Rate: ");
-        double rate = scanner.nextDouble();
-        double n = 12 * years;
-        double r = rate / (12 * 100);
-        double payment = (principal * r ) / (1 -Math.pow((1 + r), (-n)));
-        System.out.println("Monthly Payment : " + payment);
+        System.out.println("Enter number to find square root:");
+        double c = scanner.nextDouble();
+        double t = c;
+        double epsilon = 1e-15;
+        while (Math.abs(t - c / t) > epsilon * t) {
+            t = (c / t + t) / 2;
+        }
+        System.out.println("Square root of "+ c + " is :"+ (int)t);
     }
 }
